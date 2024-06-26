@@ -1,4 +1,4 @@
-# Meme Fetcher
+# Meme-inator
 
 A simple and fun web app built with ReactJS and Vite that fetches memes from top subreddits and displays them at the click of a button.
 
