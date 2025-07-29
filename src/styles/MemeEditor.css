@@ -1,0 +1,447 @@
+/* Meme Editor Styles */
+.meme-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Control Buttons */
+.editor-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #fff;
+    color: #222;
+    box-shadow: none;
+    min-width: 120px;
+    justify-content: center;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+}
+
+.control-btn.primary {
+    background: #fff;
+    color: #222;
+    border: 1.5px solid #d1d5db;
+}
+
+.control-btn.secondary {
+    background: #f3f4f6;
+    color: #333;
+    border: 1.5px solid #cbd5e1;
+}
+
+.control-btn.success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1.5px solid #10b981;
+}
+
+.control-btn:hover, .control-btn:focus {
+    background: #f3f4f6;
+    color: #111;
+    border-color: #a1a1aa;
+    outline: none;
+}
+
+.control-btn:active {
+    background: #e5e7eb;
+    color: #111;
+}
+
+/* Meme Container */
+.meme-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.meme {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    background: white;
+    max-width: 100%;
+    min-height: 300px;
+}
+
+.meme-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Image Loading State */
+.image-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: #666;
+    text-align: center;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.image-loading p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.retry-notice {
+    margin-top: 0.5rem !important;
+    font-size: 0.8rem !important;
+    color: #ffc107 !important;
+    font-weight: 600 !important;
+    animation: pulse 2s infinite;
+}
+
+/* Image Error State */
+.image-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: #666;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    min-height: 300px;
+}
+
+.image-error svg {
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+}
+
+.image-error h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+.image-error p {
+    margin: 0 0 1.5rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.retry-image-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.retry-image-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* Meme Text Overlay */
+.meme-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 0.5rem;
+    width: 90%;
+    word-wrap: break-word;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.meme-text.top {
+    top: 1rem;
+}
+
+.meme-text.bottom {
+    bottom: 1rem;
+}
+
+/* Settings Panel */
+.settings-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.setting-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.setting-group input[type="text"] {
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.setting-group input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.setting-group input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.setting-group input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+    cursor: pointer;
+}
+
+.setting-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.setting-group input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.setting-group input[type="color"] {
+    width: 50px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+}
+
+.setting-group input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.setting-group input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 8px;
+}
+
+.setting-group select {
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.setting-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.setting-group select option {
+    background: #2a5298;
+    color: white;
+}
+
+.setting-group span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Reset Button */
+.reset-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.1rem;
+    background: #fff0f0;
+    border: 1px solid #ffd6d6;
+    border-radius: 7px;
+    color: #c0392b;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: none;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+}
+.reset-btn:hover, .reset-btn:focus {
+    background: #ffeaea;
+    color: #a93226;
+    border-color: #ffb3b3;
+    outline: none;
+}
+
+/* Animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .editor-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .control-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .settings-panel {
+        padding: 1.5rem;
+    }
+    
+    .meme-container {
+        padding: 0.5rem;
+    }
+    
+    .image-loading,
+    .image-error {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .meme-editor {
+        gap: 1rem;
+    }
+    
+    .settings-panel {
+        padding: 1rem;
+    }
+    
+    .setting-group input[type="text"],
+    .setting-group select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .image-loading,
+    .image-error {
+        padding: 1.5rem;
+    }
+}
+
+/* Loading state for image */
+.meme-image.loading {
+    opacity: 0.7;
+    filter: blur(2px);
+}
+
+/* Error state for image */
+.meme-image.error {
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+/* Hover effects */
+.meme:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Focus styles for accessibility */
+.control-btn:focus,
+.setting-group input:focus,
+.setting-group select:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+} 
