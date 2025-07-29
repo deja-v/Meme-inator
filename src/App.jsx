@@ -5,7 +5,6 @@ import MemeEditor from './components/MemeEditor';
 import Loading from './components/Loading';
 import Footer from './components/Footer';
 import { useMemeApi } from './hooks/useMemeApi';
-import { getRandomFallbackMeme } from './utils/fallbackMemes.js';
 import './styles/App.css';
 
 function App() {

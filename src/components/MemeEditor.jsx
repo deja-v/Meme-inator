@@ -79,7 +79,12 @@ export default function MemeEditor({ meme, onMemeChange, onGetNewMeme }) {
             
             const link = document.createElement('a');
             link.download = 'meme-inator-meme.png';
-            link.href = canvas.toDataURL('image/png', 1.0);
+            try {
+                link.href = canvas.toDataURL('image/png', 1.0);
+            } catch (err) {
+                alert('Sorry, this meme cannot be downloaded due to browser security restrictions (CORS). Try another meme or use a fallback template.');
+                return;
+            }
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -200,6 +205,7 @@ export default function MemeEditor({ meme, onMemeChange, onGetNewMeme }) {
                         alt="Meme" 
                         onLoad={handleImageLoad}
                         style={{ display: imageLoading ? 'none' : 'block' }}
+                        crossOrigin="anonymous"
                     />
                     
                     {!imageLoading && textSettings.topText && (

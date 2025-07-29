@@ -47,24 +47,25 @@
 }
 
 .close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
+    background: white;
+    border: 1px solid #e0e4ef;
+    color: #222;
+    font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.25rem;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: background 0.18s, color 0.18s, border 0.18s;
 }
-
-.close-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.1);
+.close-btn:hover, .close-btn:focus {
+    background: #e0e4ef;
+    color: #111;
+    border-color: #bfc8e6;
+    outline: none;
 }
 
 .gallery-controls {
@@ -118,23 +119,25 @@
 
 .category-btn {
     padding: 0.5rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 0.8rem;
+    border: 1px solid #e0e4ef;
+    border-radius: 7px;
+    background: #f5f6fa;
+    color: #222;
+    font-size: 0.95rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.18s, color 0.18s, border 0.18s;
 }
-
-.category-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
+.category-btn:hover, .category-btn:focus {
+    background: #e0e4ef;
+    color: #111;
+    border-color: #bfc8e6;
+    outline: none;
 }
-
 .category-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-color: transparent;
+    background: #eafaf1;
+    color: #1a7f5a;
+    border-color: #b7e4c7;
 }
 
 .meme-grid {
@@ -152,6 +155,7 @@
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
+    min-height: 200px;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -270,60 +274,27 @@
     font-size: 0.9rem;
 }
 
-.no-results button {
-    padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 8px;
-    color: white;
+.no-results button, .retry-btn {
+    padding: 0.5rem 1.1rem;
+    background: #f5f6fa;
+    border: 1px solid #e0e4ef;
+    border-radius: 7px;
+    color: #222;
+    font-size: 0.95rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+    box-shadow: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin: 0 auto;
 }
-
-.no-results button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-}
-
-.retry-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.retry-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-}
-
-.failed-images-notice {
-    background: rgba(255, 193, 7, 0.1);
-    border: 1px solid rgba(255, 193, 7, 0.3);
-    border-radius: 8px;
-    padding: 1rem 2rem;
-    margin: 0 2rem 1.5rem 2rem;
-    text-align: center;
-}
-
-.failed-images-notice p {
-    margin: 0;
-    color: #ffc107;
-    font-size: 0.9rem;
-    font-weight: 500;
+.no-results button:hover, .no-results button:focus, .retry-btn:hover, .retry-btn:focus {
+    background: #e0e4ef;
+    color: #111;
+    border-color: #bfc8e6;
+    outline: none;
 }
 
 /* Scrollbar Styling */

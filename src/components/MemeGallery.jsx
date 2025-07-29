@@ -1,21 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Grid, Search, Star, Image, RefreshCw } from 'lucide-react';
-import memesData from '../memesData.jsx';
-import { getAllFallbackMemes } from '../utils/fallbackMemes.js';
+import { useMemeApi } from '../hooks/useMemeApi';
 
 export default function MemeGallery({ onSelectMeme, isVisible, onClose }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [failedImages, setFailedImages] = useState(new Set());
+    const { memes, loading, refreshMemes } = useMemeApi();
 
-    // Get popular meme templates from the data
-    const popularMemes = memesData.data.memes.slice(0, 20);
-    const fallbackMemes = getAllFallbackMemes();
-    
-    // Combine regular memes with fallback memes
-    const allMemes = [...popularMemes, ...fallbackMemes];
-    
+    // Optionally, you can filter fallback memes by id if needed
+    // const fallbackMemes = memes.filter(meme => meme.id && meme.id.startsWith('fallback'));
+
     const categories = [
         { id: 'all', name: 'All Memes' },
         { id: 'classic', name: 'Classic' },
@@ -24,14 +20,14 @@ export default function MemeGallery({ onSelectMeme, isVisible, onClose }) {
         { id: 'fallback', name: 'Reliable Templates' }
     ];
 
-    const filteredMemes = allMemes.filter(meme => {
-        const matchesSearch = meme.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const filteredMemes = memes.filter(meme => {
+        const matchesSearch = meme.name && meme.name.toLowerCase().includes(searchTerm.toLowerCase());
         const notFailed = !failedImages.has(meme.id);
-        
+
         if (selectedCategory === 'fallback') {
-            return matchesSearch && meme.id.startsWith('fallback');
+            return matchesSearch && meme.id && meme.id.startsWith('fallback');
         }
-        
+
         return matchesSearch && notFailed;
     });
 
@@ -91,7 +87,7 @@ export default function MemeGallery({ onSelectMeme, isVisible, onClose }) {
                         />
                     </div>
 
-                    <div className="category-filters">
+                    {/* <div className="category-filters">
                         {categories.map(category => (
                             <button
                                 key={category.id}
@@ -101,14 +97,14 @@ export default function MemeGallery({ onSelectMeme, isVisible, onClose }) {
                                 {category.name}
                             </button>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="meme-grid">
                     {filteredMemes.map((meme, index) => (
                         <motion.div
                             key={meme.id}
-                            className={`meme-card ${meme.id.startsWith('fallback') ? 'fallback-meme' : ''}`}
+                            className={`meme-card ${meme.id && meme.id.startsWith('fallback') ? 'fallback-meme' : ''}`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.05 }}
@@ -125,7 +121,7 @@ export default function MemeGallery({ onSelectMeme, isVisible, onClose }) {
                                     <Star size={16} />
                                     <span>Use Template</span>
                                 </div>
-                                {meme.id.startsWith('fallback') && (
+                                {meme.id && meme.id.startsWith('fallback') && (
                                     <div className="fallback-badge">
                                         Reliable
                                     </div>

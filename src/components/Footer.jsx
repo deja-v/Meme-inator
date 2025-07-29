@@ -11,7 +11,7 @@ export default function Footer() {
                 </div>
                 <div className="footer-section">
                     <a 
-                        href="https://github.com" 
+                        href="http://github.com/deja-v/Meme-inator" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="footer-link"
@@ -20,7 +20,7 @@ export default function Footer() {
                         GitHub
                     </a>
                     <a 
-                        href="https://meme-api.com" 
+                        href="https://imgflip.com/api" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="footer-link"
